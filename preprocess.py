@@ -13,7 +13,7 @@ def split_to_train_val():
 
     filenames = dataframe[features_list]
     labels = dataframe[target]
-    train_data, train_labels, vali_data, vali_labels = train_test_split(filenames, labels, test_size = 0.2, random_state = 3)
+    train_data, train_labels, vali_data, vali_labels = train_test_split(filenames, labels, test_size = 0.01, random_state = 3)
 
     return train_data, train_labels, vali_data, vali_labels
 
