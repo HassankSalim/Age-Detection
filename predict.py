@@ -7,6 +7,7 @@ import cv2
 
 
 filenames = glob('data/Pre_test/*.jpg')
+map_to_class = {0:'YOUNG', 1:'MIDDLE', 2:'OLD'}
 
 def read(file_name):
     img = cv2.imread(file_name, 1)
@@ -43,7 +44,7 @@ with tf.Session(graph = graph) as sess:
         temp = {}
         temp['ID'] = i.split('/')[-1]
         out = sess.run(output, feed_dict={ X : read(i) })
-        temp['Class'] = out[0]
+        temp['Class'] = map_to_class[out[0]]
         out_frame.append(temp)
 
 submission_frame = pd.DataFrame(out_frame)
