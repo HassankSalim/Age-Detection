@@ -29,11 +29,12 @@ def load_graph(file_name):
         )
     return graph
 
-graph  = load_graph('models/basic_model.pb')
+graph  = load_graph('models/model_v3.pb')
 for i in graph.get_operations():
     print(i.name)
 
 X = graph.get_tensor_by_name('prefix/Placeholder:0')
+# keep_prob = graph.get_tensor_by_name('prefix/Placeholder_1:0')
 output = graph.get_tensor_by_name('prefix/final_output:0')
 
 
@@ -48,4 +49,4 @@ with tf.Session(graph = graph) as sess:
         out_frame.append(temp)
 
 submission_frame = pd.DataFrame(out_frame)
-submission_frame.to_csv('submission.csv', index = False)
+submission_frame.to_csv('submission_last.csv', index = False)
