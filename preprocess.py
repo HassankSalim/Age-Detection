@@ -3,7 +3,7 @@ from sklearn.cross_validation import train_test_split
 
 class_age_to_num = {'YOUNG':0, 'MIDDLE':1, 'OLD':2}
 
-dataframe = pd.read_csv('data/train.csv')
+dataframe = pd.read_csv('data/pre_train.csv')
 dataframe['Class'] = dataframe['Class'].apply(lambda x: class_age_to_num[x])
 
 features_list = ['ID']
